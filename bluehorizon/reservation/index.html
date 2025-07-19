@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Reservation | Blue Horizon Suites</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: linear-gradient(to bottom, #3a578a, #253d63);
+      color: white;
+      padding: 40px;
+      text-align: center;
+    }
+    input, select {
+      padding: 12px;
+      font-size: 16px;
+      border-radius: 6px;
+      border: none;
+      margin: 10px auto;
+      display: block;
+      width: 80%;
+      max-width: 400px;
+    }
+    .iban-box {
+      background: #fff;
+      color: #222;
+      border-radius: 8px;
+      padding: 20px;
+      margin: 20px auto;
+      max-width: 500px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      display: none;
+    }
+    .iban-box h3 {
+      margin-top: 0;
+      color: #c0392b;
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Make a Reservation</h1>
+
+  <input type="date" id="date" min="" placeholder="Select a date" />
+
+  <div id="person-area" style="display:none;">
+    <select id="person">
+      <option value="">Select number of guests</option>
+      <option>1 Person</option>
+      <option>2 Persons</option>
+      <option>3 Persons</option>
+      <option>4 Persons</option>
+      <option>5+ Persons</option>
+    </select>
+  </div>
+
+  <div class="iban-box" id="iban-box">
+    <h3>For Guests Coming from Turkey:</h3>
+    <p><strong>IBAN:</strong> TR83 0006 2000 2310 0006 8172 69</p>
+    <p><strong>Account Holder:</strong> ÖZKAN KOÇ</p>
+  </div>
+
+  <script>
+    // minimum date = today
+    const today = new Date().toISOString().split('T')[0];
+    document.getElementById("date").setAttribute("min", today);
+
+    const dateInput = document.getElementById("date");
+    const personArea = document.getElementById("person-area");
+    const personSelect = document.getElementById("person");
+    const ibanBox = document.getElementById("iban-box");
+
+    dateInput.addEventListener("change", () => {
+      personArea.style.display = "block";
+    });
+
+    personSelect.addEventListener("change", () => {
+      if (personSelect.value !== "") {
+        ibanBox.style.display = "block";
+      }
+    });
+  </script>
+
+</body>
+</html>
