@@ -28,26 +28,30 @@
       letter-spacing: 3px;
     }
     .nav-buttons {
-      position: absolute;
-      bottom: 20px;
-      left: 50%;
-      transform: translateX(-50%);
-      display: flex;
-      gap: 20px;
-    }
-    .nav-buttons a {
-      background: #ffcc33;
-      color: #222;
-      padding: 10px 20px;
-      border-radius: 5px;
-      text-decoration: none;
-      font-weight: bold;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-      transition: background 0.3s;
-    }
-    .nav-buttons a:hover {
-      background: #ffb347;
-    }
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 20px;
+  padding: 10px 20px;
+}
+.nav-buttons a {
+  background: #ffcc33;
+  color: #222;
+  padding: 12px 24px;
+  border-radius: 6px;
+  text-decoration: none;
+  font-weight: bold;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+  transition: background 0.3s;
+  flex: 1 1 auto;
+  max-width: 200px;
+  text-align: center;
+}
+.nav-buttons a:hover {
+  background: #ffb347;
+}
+
     .content {
       max-width: 1100px;
       margin: 40px auto;
@@ -154,15 +158,17 @@
 <body>
   <div class="hero">
     <h1>Blue Horizon Suites</h1>
-    <div class="nav-buttons">
-      <a href="#">Reservation</a>
-      <a href="#">Gallery</a>
-      <a href="#">About Us</a>
-      <a href="#">Contact</a>
-    </div>
+  </div>
+
+  <div class="nav-buttons">
+    <a href="/reservation">Reservation</a>
+    <a href="/gallery">Gallery</a>
+    <a href="/about">About Us</a>
+    <a href="/contact">Contact</a>
   </div>
 
   <div class="content">
+
     <div class="gallery-preview" id="gallery">
       <img src="images/1.png" alt="Gallery image">
       <img src="images/2.png" alt="Gallery image">
