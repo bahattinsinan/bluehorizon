@@ -108,50 +108,38 @@
       margin-top: 0;
       font-size: 26px;
     }
+
     .gallery-preview {
-      display: flex;
-      flex-wrap: nowrap;
-      gap: 10px;
-      overflow-x: auto;
-      scroll-behavior: smooth;
+      position: relative;
+      width: 100%;
+      height: 240px;
+      overflow: hidden;
     }
-    .gallery-preview {
-  position: relative;
-  height: 220px; /* resim yüksekliğine göre ayarlayabilirsin */
-  overflow: hidden;
-}
-.gallery-preview img {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  border-radius: 8px;
-  filter: contrast(1.08) brightness(1.1) saturate(1.2);
-  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
-  transition: opacity 1s ease-in-out;
-  opacity: 0;
-  z-index: 1;
-}
-.gallery-preview img.visible {
-  opacity: 1;
-  z-index: 2;
-}
-.gallery-preview img:hover {
-  transform: scale(1.05);
-}
 
-    @media (min-width: 768px) {
-  .gallery-preview {
-    height: 300px; /* büyük ekranlarda daha yüksek olabilir */
-  }
-   }
+    .gallery-preview img {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      border-radius: 10px;
+      opacity: 0;
+      z-index: 1;
+      transition: opacity 1s ease-in-out;
+    }
 
-      .gallery-preview img {
-        width: calc((100% - 40px) / 5);
+    .gallery-preview img.visible {
+      opacity: 1;
+      z-index: 2;
+    }
+
+    @media (max-width: 768px) {
+      .gallery-preview {
+        height: 200px;
       }
-    
+    }
+
     .footer {
       text-align: center;
       margin-top: 60px;
@@ -181,20 +169,42 @@
   <div class="content">
     <h2 style="text-align:center; color:#ffcc33;">Misafir Yorumları</h2>
 
-    <div class="gallery-box">
-      <div class="flag">🇺🇸</div>
-      <div class="gallery-preview" id="gallery">
-        <img src="images/1.png" alt="Gallery image">
-        <img src="images/2.png" alt="Gallery image">
-        <img src="images/3.png" alt="Gallery image">
-        <img src="images/4.png" alt="Gallery image">
-        <img src="images/5.png" alt="Gallery image">
-        <img src="images/6.png" alt="Gallery image">
-        <img src="images/8.png" alt="Gallery image">
-        <img src="images/9.png" alt="Gallery image">
-        <img src="images/10.png" alt="Gallery image">
-      </div>
-    </div>
+    <div class="gallery-preview" id="gallery">
+     <img src="images/1.png" alt="Gallery image">
+     <img src="images/2.png" alt="Gallery image">
+     <img src="images/3.png" alt="Gallery image">
+     <img src="images/4.png" alt="Gallery image">
+     <img src="images/5.png" alt="Gallery image">
+     <img src="images/6.png" alt="Gallery image">
+     <img src="images/8.png" alt="Gallery image">
+     <img src="images/9.png" alt="Gallery image">
+     <img src="images/10.png" alt="Gallery image">
+     <img src="images/11.png" alt="Gallery image">
+     <img src="images/ChatGPT Image 19 Tem 2025 21_57_58.png" alt="Gallery image">
+     <img src="images/ChatGPT Image 19 Tem 2025 22_01_40.png" alt="Gallery image">
+     <img src="images/images (1).jpg" alt="Gallery image">
+     <img src="images/images (2).jpg" alt="Gallery image">
+     <img src="images/images (3).jpg" alt="Gallery image">
+     <img src="images/images (4).jpg" alt="Gallery image">
+     <img src="images/images (5).jpg" alt="Gallery image">
+     <img src="images/images (6).jpg" alt="Gallery image">
+     <img src="images/images (7).jpg" alt="Gallery image">
+     <img src="images/images (8).jpg" alt="Gallery image">
+     <img src="images/images (9).jpg" alt="Gallery image">
+     <img src="images/images (10).jpg" alt="Gallery image">
+     <img src="images/images (11).jpg" alt="Gallery image">
+     <img src="images/images (12).jpg" alt="Gallery image">
+     <img src="images/images (13).jpg" alt="Gallery image">
+     <img src="images/images (14).jpg" alt="Gallery image">
+     <img src="images/images.jpg" alt="Gallery image">
+     <img src="images/indir.jpg" alt="Gallery image">
+     <img src="images/indir (7).jpg" alt="Gallery image">
+     <img src="images/indir (9).jpg" alt="Gallery image">
+     <img src="images/indir (11).jpg" alt="Gallery image">
+     <img src="images/l.jpg" alt="Gallery image">
+     <img src="images/oda5.png" alt="Gallery image">
+     <img src="images/preview_setup-catering-ve-yemekli-davet_Ozk7V76F.jpg" alt="Gallery image">
+ </div>
 
     <div class="comment-box" id="rotating-comment">
       <div class="flag">🇺🇸</div>
@@ -219,10 +229,9 @@
   </div>
 
   <div class="footer">
-  📍 California Oceanfront, 100 Beachside Avenue, CA 90210 <br>
-  <a href="https://wa.me/12512159107" target="_blank">📱 +1 251-215-91-07 (WhatsApp)</a>
-</div>
-
+    📍 California Oceanfront, 100 Beachside Avenue, CA 90210 <br>
+    <a href="https://wa.me/12512159107" target="_blank">📱 +1 251-215-91-07 (WhatsApp)</a>
+  </div>
 
   <script>
     const commentBox = document.getElementById("rotating-comment");
@@ -238,21 +247,21 @@
       commentIndex = (commentIndex + 1) % comments.length;
       commentBox.innerHTML = '<div class="flag">🇺🇸</div><p>' + comments[commentIndex] + '</p>';
     }, 10000);
-    
+
     const gallery = document.getElementById("gallery");
-const galleryImages = gallery.querySelectorAll("img");
-let currentIndex = 0;
+    const galleryImages = gallery.querySelectorAll("img");
+    let currentIndex = 0;
 
-function showNextImage() {
-  galleryImages.forEach((img) => {
-    img.classList.remove("visible");
-  });
-  galleryImages[currentIndex].classList.add("visible");
-  currentIndex = (currentIndex + 1) % galleryImages.length;
-}
+    function showNextImage() {
+      galleryImages.forEach((img) => {
+        img.classList.remove("visible");
+      });
+      galleryImages[currentIndex].classList.add("visible");
+      currentIndex = (currentIndex + 1) % galleryImages.length;
+    }
 
-showNextImage(); // Başlangıçta bir kez göster
-setInterval(showNextImage, 10000); // 10 saniyede bir değiştir
+    showNextImage();
+    setInterval(showNextImage, 10000);
   </script>
 </body>
 </html>
