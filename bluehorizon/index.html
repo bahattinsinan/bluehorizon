@@ -13,7 +13,7 @@
       color: white;
     }
     .hero {
-      background: url('images/oda1.jpg') center/cover no-repeat;
+      background: url('images/kapak.png') center/cover no-repeat;
       text-align: center;
       padding: 100px 20px;
       box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.5);
@@ -58,18 +58,24 @@
       margin-top: 0;
       font-size: 26px;
     }
-    .gallery-box img {
-      width: 100%;
+    .gallery-preview {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      justify-content: center;
+    }
+    .gallery-preview img {
+      width: 180px;
       height: auto;
       border-radius: 8px;
-      object-fit: cover;
       image-rendering: auto;
+      object-fit: cover;
       filter: contrast(1.08) brightness(1.1) saturate(1.2);
       box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
       transition: transform 0.3s ease;
     }
-    .gallery-box img:hover {
-      transform: scale(1.03);
+    .gallery-preview img:hover {
+      transform: scale(1.05);
     }
   </style>
 </head>
@@ -82,7 +88,27 @@
     <!-- Gallery Preview -->
     <div class="gallery-box">
       <div class="flag">🇺🇸</div>
-      <img src="images/oda1.jpg" alt="Hotel view" loading="lazy">
+      <div class="gallery-preview">
+        <img src="images/1.png" alt="Gallery image">
+        <img src="images/2.png" alt="Gallery image">
+        <img src="images/3.png" alt="Gallery image">
+        <img src="images/4.png" alt="Gallery image">
+        <img src="images/5.png" alt="Gallery image">
+        <img src="images/6.png" alt="Gallery image">
+        <img src="images/8.png" alt="Gallery image">
+        <img src="images/9.png" alt="Gallery image">
+        <img src="images/10.png" alt="Gallery image">
+        <img src="images/11.png" alt="Gallery image">
+        <img src="images/ChatGPT Image 19 Tem 2025 21_57_58.png" alt="Gallery image">
+        <img src="images/ChatGPT Image 19 Tem 2025 22_01_40.png" alt="Gallery image">
+        <img src="images/indir (7).jpg" alt="Gallery image">
+        <img src="images/indir (9).jpg" alt="Gallery image">
+        <img src="images/indir (11).jpg" alt="Gallery image">
+        <img src="images/indir.jpg" alt="Gallery image">
+        <img src="images/l.jpg" alt="Gallery image">
+        <img src="images/oda5.png" alt="Gallery image">
+        <img src="images/preview_setup-catering-ve-yemekli-davet_Ozk7V76F.jpg" alt="Gallery image">
+      </div>
     </div>
 
     <!-- Comment box -->
