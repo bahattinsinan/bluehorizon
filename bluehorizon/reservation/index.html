@@ -12,7 +12,7 @@
       padding: 40px;
       text-align: center;
     }
-    input, select {
+    input, select, button {
       padding: 12px;
       font-size: 16px;
       border-radius: 6px;
@@ -47,6 +47,16 @@
       display: none;
       color: #ffcc33;
     }
+    #payButton {
+      background-color: #ffcc33;
+      color: #222;
+      font-weight: bold;
+      cursor: pointer;
+      display: none;
+    }
+    #payButton:hover {
+      background-color: #ffb347;
+    }
   </style>
 </head>
 <body>
@@ -60,8 +70,8 @@
     <option value="1100">Ultra Luxury Room - $1100/night</option>
   </select>
 
-  <input type="date" id="checkin" placeholder="Check-in date" min="">
-  <input type="date" id="checkout" placeholder="Check-out date" min="">
+  <input type="date" id="checkin" placeholder="Check-in date" lang="en" min="">
+  <input type="date" id="checkout" placeholder="Check-out date" lang="en" min="">
 
   <div id="person-area" style="display:none;">
     <input type="number" id="guestCount" min="1" placeholder="Number of guests">
@@ -70,11 +80,13 @@
 
   <div class="price-box" id="priceBox">Total: $0</div>
 
+  <button id="payButton">💳 Pay Now</button>
+
   <div class="iban-box" id="iban-box">
     <h3>Payment Information (USD)</h3>
     <p><strong>IBAN:</strong> TR22 0006 2000 2310 0009 0556 72</p>
     <p><strong>Account Holder:</strong> ÖZKAN KOÇ</p>
-    <p><strong>Bank:</strong> GARANTİ BBVA</p>
+    <p><strong>Bank:</strong> GARANTİ BANKASI</p>
   </div>
 
   <script>
@@ -88,6 +100,7 @@
     const personArea = document.getElementById("person-area");
     const priceBox = document.getElementById("priceBox");
     const ibanBox = document.getElementById("iban-box");
+    const payButton = document.getElementById("payButton");
 
     // Adım adım gösterim
     [roomType, checkin, checkout].forEach(el => {
@@ -112,12 +125,19 @@
           const total = pricePerNight * days * guests;
           priceBox.textContent = `Total: $${total}`;
           priceBox.style.display = "block";
-          ibanBox.style.display = "block";
+          payButton.style.display = "block";
         } else {
           priceBox.textContent = `Invalid dates selected.`;
           priceBox.style.display = "block";
+          payButton.style.display = "none";
         }
+      } else {
+        payButton.style.display = "none";
       }
+    });
+
+    payButton.addEventListener("click", () => {
+      ibanBox.style.display = "block";
     });
   </script>
 
