@@ -110,6 +110,7 @@
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr/dist/l10n/en.js"></script>
   <script>
     flatpickr("#checkin", {
       dateFormat: "Y-m-d",
@@ -158,5 +159,12 @@
     checkout.addEventListener("change", calculatePrice);
     guests.addEventListener("input", calculatePrice);
   </script>
+
+  <div style="text-align:center; margin-top: 40px;">
+    <a href="../index.html"
+       style="background: #ffcc33; color: #222; padding: 12px 24px; font-weight: bold; text-decoration: none; border-radius: 6px; box-shadow: 0 4px 10px rgba(0,0,0,0.3);">
+      ← Back to Homepage
+    </a>
+  </div>
 </body>
 </html>
