@@ -153,6 +153,30 @@
       text-decoration: none;
       font-weight: bold;
     }
+    #whatsapp-button {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #25D366;
+  color: white;
+  border-radius: 50%;
+  width: 60px;
+  height: 60px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-decoration: none;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+  z-index: 999;
+}
+#whatsapp-button:hover {
+  background-color: #1ebd5a;
+}
+#whatsapp-button img {
+  width: 30px;
+  height: 30px;
+}
+
   </style>
 </head>
 <body>
@@ -266,5 +290,12 @@
     showNextImage();
     setInterval(showNextImage, 10000);
   </script>
+
+  <a id="whatsapp-button"
+     href="https://wa.me/12512159107?text=Hello!%20I%20would%20like%20to%20get%20more%20information%20about%20room%20availability%20and%20rates%20at%20Blue%20Horizon%20Suites."
+     target="_blank">
+    <img src="https://img.icons8.com/ios-filled/50/ffffff/whatsapp.png" alt="WhatsApp" />
+  </a>
+  
 </body>
 </html>
