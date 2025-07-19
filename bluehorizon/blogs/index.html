@@ -3,98 +3,101 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Our Blog - Blue Horizon Suites</title>
-  <link rel="stylesheet" href="../css/style.css">
+  <title>Blue Horizon Suites</title>
+  <link rel="stylesheet" href="css/style.css">
   <style>
-    .blog-container {
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #1e3f66;
+      color: white;
+    }
+    .hero {
+      background: linear-gradient(135deg, #4682b4, #5dade2);
+      text-align: center;
+      padding: 80px 20px;
+    }
+    .hero h1 {
+      font-size: 60px;
+      margin: 0;
+      color: white;
+      text-shadow: 3px 3px 10px rgba(0,0,0,0.6);
+      letter-spacing: 2px;
+    }
+    .content {
       max-width: 1000px;
       margin: 40px auto;
-      padding: 0 20px;
-    }
-    .blog-post {
-      background: #fff;
-      margin-bottom: 40px;
       padding: 20px;
-      border-radius: 10px;
-      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     }
-    .blog-post img {
-      width: 100%;
+    .comment-box, .blog-box {
+      background: white;
+      color: black;
       border-radius: 10px;
-      margin-bottom: 15px;
+      padding: 20px;
+      margin-bottom: 30px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+      position: relative;
     }
-    .blog-post h2 {
-      color: #005580;
+    .flag {
+      position: absolute;
+      top: -15px;
+      left: -15px;
+      background: #fff;
+      border-radius: 50%;
+      padding: 10px;
+      font-size: 20px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+    }
+    .blog-box h3 {
+      color: #1e3f66;
       margin-top: 0;
-    }
-    .blog-post p {
-      line-height: 1.6;
     }
   </style>
 </head>
 <body>
-  <div class="blog-container">
-    <h1>Discover More at Blue Horizon Suites</h1>
+  <div class="hero">
+    <h1>Blue Horizon Suites</h1>
+  </div>
 
-    <div class="blog-post">
-      <img src="../images/oda1.jpg" alt="Ocean View Room">
-      <h2>Wake Up to Ocean Views</h2>
+  <div class="content">
+    <!-- Comment box -->
+    <div class="comment-box" id="rotating-comment">
+      <div class="flag">🇺🇸</div>
+      <p><strong>Maria:</strong> The hotel was amazing!</p>
+    </div>
+
+    <!-- Blog previews -->
+    <div class="blog-box">
+      <div class="flag">🇺🇸</div>
+      <h3>Wake Up to Ocean Views</h3>
       <p>Experience the breathtaking beauty of waking up to the sound of waves and a clear view of the horizon. Our ocean-view rooms provide the perfect start to a luxurious day in California.</p>
     </div>
-
-    <div class="blog-post">
-      <img src="../images/oda2.jpg" alt="Luxury Bathroom">
-      <h2>Indulge in Spa-Like Comfort</h2>
-      <p>Our bathrooms are designed with elegance and tranquility in mind. Enjoy marble finishes, ambient lighting, and spa-quality amenities every time you relax.</p>
-    </div>
-
-    <div class="blog-post">
-      <img src="../images/oda3.jpg" alt="Pool Area">
-      <h2>Swim and Sunbathe in Style</h2>
-      <p>The outdoor pool area is a true oasis. Surrounded by palm trees and with a view of the beach, it’s the ultimate spot to relax under the California sun.</p>
-    </div>
-
-    <div class="blog-post">
-      <img src="../images/oda4.jpg" alt="Romantic Getaway">
-      <h2>Perfect for Romantic Escapes</h2>
-      <p>Whether it’s your honeymoon or a spontaneous weekend with someone special, Blue Horizon Suites sets the scene for unforgettable moments together.</p>
-    </div>
-
-    <div class="blog-post">
-      <img src="../images/oda5.png" alt="Gourmet Dining">
-      <h2>Fine Dining by the Sea</h2>
+    <div class="blog-box">
+      <div class="flag">🇺🇸</div>
+      <h3>Fine Dining by the Sea</h3>
       <p>Our chefs prepare exquisite dishes using the freshest local ingredients. Dine by candlelight with the ocean breeze for a truly magical experience.</p>
     </div>
-
-    <div class="blog-post">
-      <img src="../images/3.png" alt="Sunset Moments">
-      <h2>Sunset Memories</h2>
-      <p>Sunsets at Blue Horizon Suites are nothing short of spectacular. Capture golden hour on the beach or enjoy a drink by the pool as the sun sets into the Pacific.</p>
-    </div>
-
-    <div class="blog-post">
-      <img src="../images/4.png" alt="Family Friendly">
-      <h2>A Place for Everyone</h2>
-      <p>We welcome families, couples, solo travelers, and business guests alike. Our staff ensures everyone feels at home and cared for during their stay.</p>
-    </div>
-
-    <div class="blog-post">
-      <img src="../images/5.png" alt="Events and Celebrations">
-      <h2>Host Your Special Events</h2>
-      <p>From weddings to corporate retreats, our versatile event spaces and professional planning team make every occasion flawless and memorable.</p>
-    </div>
-
-    <div class="blog-post">
-      <img src="../images/6.png" alt="Wellness and Spa">
-      <h2>Wellness and Serenity</h2>
-      <p>Recharge your body and mind at our full-service wellness center. From massages to yoga sessions, we offer everything you need to feel your best.</p>
-    </div>
-      <div class="blog-post">
-      <img src="../images/indir.jpg" alt="Muzaffer Koç Story">
-      <h2>A Journey from Kitchen to Coast</h2>
-      <p>In 2001, Muzaffer Koç arrived in the United States and began his American journey as a humble cook in a small hotel. Through hard work, dedication, and passion for hospitality, he steadily climbed the ranks and eventually laid the foundation for Blue Horizon Suites.</p>
-      <p>Today, a majority of the staff proudly consists of Muzaffer's own extended family and Turkish community members. Their warm service, unity, and cultural richness are felt in every corner of the hotel. It's not just a vacation destination — it's a living success story built on dreams and determination.</p>
+    <div class="blog-box">
+      <div class="flag">🇺🇸</div>
+      <h3>A Journey from Kitchen to Coast</h3>
+      <p>In 2001, Muzaffer Koç arrived in the United States and began his American journey as a humble cook. Today, Blue Horizon Suites is a living success story built on dreams and family unity.</p>
     </div>
   </div>
+
+  <script>
+    const commentBox = document.getElementById("rotating-comment");
+    const comments = [
+      "<strong>Maria:</strong> The hotel was amazing!",
+      "<strong>Joachim:</strong> Ich komme definitiv wieder!",
+      "<strong>Robert:</strong> Je reviendrai sans hésiter!",
+      "<strong>Alan:</strong> Clean rooms and great location!",
+      "<strong>Lori:</strong> Staff was incredibly kind!"
+    ];
+    let commentIndex = 0;
+    setInterval(() => {
+      commentIndex = (commentIndex + 1) % comments.length;
+      commentBox.innerHTML = '<div class="flag">🇺🇸</div><p>' + comments[commentIndex] + '</p>';
+    }, 10000);
+  </script>
 </body>
 </html>
