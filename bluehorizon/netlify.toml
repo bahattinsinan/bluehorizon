@@ -1,0 +1,13 @@
+[build]
+  publish = "bluehorizon"
+  command = ""
+
+[[redirects]]
+  from = "/comments"
+  to = "/comments/index.html"
+  status = 200
+
+[[redirects]]
+  from = "/blogs"
+  to = "/blogs/index.html"
+  status = 200
