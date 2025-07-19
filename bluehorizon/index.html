@@ -228,22 +228,21 @@
       commentIndex = (commentIndex + 1) % comments.length;
       commentBox.innerHTML = '<div class="flag">🇺🇸</div><p>' + comments[commentIndex] + '</p>';
     }, 10000);
-
+    
     const gallery = document.getElementById("gallery");
-    const galleryImages = gallery.querySelectorAll("img");
-    let currentIndex = 0;
-    function showNextImage() {
-      galleryImages.forEach((img, index) => {
-        img.classList.remove("visible");
-      });
-      for (let i = 0; i < 5; i++) {
-        const index = (currentIndex + i) % galleryImages.length;
-        galleryImages[index].classList.add("visible");
-      }
-      currentIndex = (currentIndex + 1) % galleryImages.length;
-    }
-    showNextImage();
-    setInterval(showNextImage, 10000);
+const galleryImages = gallery.querySelectorAll("img");
+let currentIndex = 0;
+
+function showNextImage() {
+  galleryImages.forEach((img) => {
+    img.classList.remove("visible");
+  });
+  galleryImages[currentIndex].classList.add("visible");
+  currentIndex = (currentIndex + 1) % galleryImages.length;
+}
+
+showNextImage(); // Başlangıçta bir kez göster
+setInterval(showNextImage, 10000); // 10 saniyede bir değiştir
   </script>
 </body>
 </html>
