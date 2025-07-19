@@ -3,143 +3,157 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Reservation | Blue Horizon Suites</title>
+  <title>Reservation</title>
+  <link rel="stylesheet" href="/css/style.css" />
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
   <style>
     body {
       font-family: Arial, sans-serif;
       background: linear-gradient(to bottom, #3a578a, #253d63);
       color: white;
-      padding: 40px;
+      margin: 0;
+      padding: 0;
+    }
+
+    .container {
+      max-width: 500px;
+      margin: 40px auto;
+      background: rgba(255, 255, 255, 0.05);
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.4);
+    }
+
+    h1 {
       text-align: center;
-    }
-    input, select, button {
-      padding: 12px;
-      font-size: 16px;
-      border-radius: 6px;
-      border: none;
-      margin: 10px auto;
-      display: block;
-      width: 80%;
-      max-width: 400px;
-    }
-    .info-text {
-      font-size: 14px;
-      margin-top: -8px;
+      margin-bottom: 30px;
+      font-size: 28px;
       color: #ffcc33;
     }
+
+    label {
+      display: block;
+      margin-top: 20px;
+      font-weight: bold;
+    }
+
+    select, input {
+      width: 100%;
+      padding: 12px;
+      margin-top: 8px;
+      border: none;
+      border-radius: 6px;
+      font-size: 16px;
+    }
+
     .iban-box {
       background: #fff;
       color: #222;
-      border-radius: 8px;
-      padding: 20px;
-      margin: 20px auto;
-      max-width: 500px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-      display: none;
-    }
-    .iban-box h3 {
-      margin-top: 0;
-      color: #c0392b;
-    }
-    .price-box {
-      font-size: 20px;
       margin-top: 20px;
-      display: none;
-      color: #ffcc33;
+      padding: 15px;
+      border-radius: 6px;
+      font-size: 15px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.3);
     }
-    #payButton {
-      background-color: #ffcc33;
+
+    .button {
+      display: block;
+      margin: 30px auto 0;
+      background: #ffcc33;
       color: #222;
+      padding: 12px 24px;
       font-weight: bold;
+      font-size: 16px;
+      border: none;
+      border-radius: 6px;
       cursor: pointer;
-      display: none;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+      transition: background 0.3s;
     }
-    #payButton:hover {
-      background-color: #ffb347;
+
+    .button:hover {
+      background: #ffb347;
     }
   </style>
 </head>
 <body>
+  <div class="container">
+    <h1>Make a Reservation</h1>
 
-  <h1>Make a Reservation</h1>
+    <label for="room">Select Room Type</label>
+    <select id="room">
+      <option value="">Choose...</option>
+      <option value="375">Standard - $375/night</option>
+      <option value="525">Luxury - $525/night</option>
+      <option value="1100">Ultra Luxury - $1100/night</option>
+    </select>
 
-  <select id="roomType">
-    <option value="">Select Room Type</option>
-    <option value="375">Standard Room - $375/night</option>
-    <option value="525">Luxury Room - $525/night</option>
-    <option value="1100">Ultra Luxury Room - $1100/night</option>
-  </select>
+    <label for="checkin">Check-In Date</label>
+    <input type="text" id="checkin" placeholder="Select date">
 
-  <input type="date" id="checkin" placeholder="Check-in date" lang="en" min="">
-  <input type="date" id="checkout" placeholder="Check-out date" lang="en" min="">
+    <label for="checkout">Check-Out Date</label>
+    <input type="text" id="checkout" placeholder="Select date">
 
-  <div id="person-area" style="display:none;">
-    <input type="number" id="guestCount" min="1" placeholder="Number of guests">
-    <div class="info-text">Note: Children aged 0–5 are free of charge.</div>
+    <label for="guests">Number of Guests (0-5 years free)</label>
+    <input type="number" id="guests" min="1" placeholder="Enter number of guests">
+
+    <div id="price" style="margin-top: 20px; font-size: 18px; font-weight: bold;"></div>
+
+    <button class="button" id="payBtn" style="display: none;">Proceed to Payment</button>
+
+    <div class="iban-box" id="ibanBox" style="display: none;">
+      <p>This is the USD account for our guests coming from the Republic of Türkiye:</p>
+      <p><strong>IBAN:</strong> TR22 0006 2000 2310 0009 0556 72</p>
+      <p><strong>Account Holder:</strong> ÖZKAN KOÇ</p>
+      <p><strong>Bank:</strong> GARANTİ BBVA</p>
+    </div>
   </div>
 
-  <div class="price-box" id="priceBox">Total: $0</div>
-
-  <button id="payButton">💳 Pay Now</button>
-
-  <div class="iban-box" id="iban-box">
-    <h3>Payment Information (USD)</h3>
-    <p><strong>IBAN:</strong> TR22 0006 2000 2310 0009 0556 72</p>
-    <p><strong>Account Holder:</strong> ÖZKAN KOÇ</p>
-    <p><strong>Bank:</strong> GARANTİ BANKASI</p>
-  </div>
-
+  <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
   <script>
-    const today = new Date().toISOString().split('T')[0];
-    document.getElementById("checkin").setAttribute("min", today);
+    flatpickr("#checkin", {
+      dateFormat: "Y-m-d",
+      locale: "en",
+      minDate: "today"
+    });
+    flatpickr("#checkout", {
+      dateFormat: "Y-m-d",
+      locale: "en",
+      minDate: "today"
+    });
 
-    const roomType = document.getElementById("roomType");
+    const room = document.getElementById("room");
     const checkin = document.getElementById("checkin");
     const checkout = document.getElementById("checkout");
-    const guestCount = document.getElementById("guestCount");
-    const personArea = document.getElementById("person-area");
-    const priceBox = document.getElementById("priceBox");
-    const ibanBox = document.getElementById("iban-box");
-    const payButton = document.getElementById("payButton");
+    const guests = document.getElementById("guests");
+    const priceDisplay = document.getElementById("price");
+    const payBtn = document.getElementById("payBtn");
+    const ibanBox = document.getElementById("ibanBox");
 
-    // Adım adım gösterim
-    [roomType, checkin, checkout].forEach(el => {
-      el.addEventListener("change", () => {
-        if (roomType.value && checkin.value && checkout.value) {
-          personArea.style.display = "block";
-        }
-      });
-    });
+    function calculatePrice() {
+      const roomRate = parseInt(room.value);
+      const checkinDate = new Date(checkin.value);
+      const checkoutDate = new Date(checkout.value);
+      const numGuests = parseInt(guests.value);
 
-    guestCount.addEventListener("input", () => {
-      const guests = parseInt(guestCount.value);
-      if (!isNaN(guests) && guests > 0) {
-        // Gün farkı hesapla
-        const start = new Date(checkin.value);
-        const end = new Date(checkout.value);
-        const timeDiff = end - start;
-        const days = Math.ceil(timeDiff / (1000 * 60 * 60 * 24));
-
-        if (days > 0) {
-          const pricePerNight = parseInt(roomType.value);
-          const total = pricePerNight * days * guests;
-          priceBox.textContent = `Total: $${total}`;
-          priceBox.style.display = "block";
-          payButton.style.display = "block";
-        } else {
-          priceBox.textContent = `Invalid dates selected.`;
-          priceBox.style.display = "block";
-          payButton.style.display = "none";
-        }
+      if (!isNaN(roomRate) && checkin.value && checkout.value && !isNaN(numGuests)) {
+        const diffTime = Math.abs(checkoutDate - checkinDate);
+        const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+        const total = diffDays * roomRate * numGuests;
+        priceDisplay.textContent = `Total: $${total}`;
+        payBtn.style.display = "block";
+        ibanBox.style.display = "block";
       } else {
-        payButton.style.display = "none";
+        priceDisplay.textContent = "";
+        payBtn.style.display = "none";
+        ibanBox.style.display = "none";
       }
-    });
+    }
 
-    payButton.addEventListener("click", () => {
-      ibanBox.style.display = "block";
-    });
+    room.addEventListener("change", calculatePrice);
+    checkin.addEventListener("change", calculatePrice);
+    checkout.addEventListener("change", calculatePrice);
+    guests.addEventListener("input", calculatePrice);
   </script>
-
 </body>
 </html>
