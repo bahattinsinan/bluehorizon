@@ -9,34 +9,39 @@
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
-      background-color: #102840;
+      background: linear-gradient(to bottom, #102840 0%, #0e1f33 100%);
       color: white;
     }
     .hero {
-      background: linear-gradient(135deg, #3b82f6, #2563eb);
+      background: url('images/oda1.jpg') center/cover no-repeat;
       text-align: center;
-      padding: 80px 20px;
+      padding: 100px 20px;
+      box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.5);
     }
     .hero h1 {
-      font-size: 60px;
+      font-size: 64px;
       margin: 0;
-      color: white;
-      text-shadow: 3px 3px 10px rgba(0,0,0,0.6);
-      letter-spacing: 2px;
+      color: #fff;
+      text-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
+      letter-spacing: 3px;
     }
     .content {
-      max-width: 1000px;
+      max-width: 1100px;
       margin: 40px auto;
       padding: 20px;
     }
     .comment-box, .blog-box, .gallery-box {
-      background: white;
-      color: black;
+      background: #f5f5f5;
+      color: #222;
       border-radius: 10px;
       padding: 20px;
-      margin-bottom: 30px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+      margin-bottom: 40px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
       position: relative;
+      transition: transform 0.3s ease;
+    }
+    .comment-box:hover, .blog-box:hover, .gallery-box:hover {
+      transform: translateY(-4px);
     }
     .flag {
       position: absolute;
@@ -51,11 +56,20 @@
     .blog-box h3 {
       color: #1e3f66;
       margin-top: 0;
+      font-size: 26px;
     }
     .gallery-box img {
       width: 100%;
       height: auto;
       border-radius: 8px;
+      object-fit: cover;
+      image-rendering: auto;
+      filter: contrast(1.08) brightness(1.1) saturate(1.2);
+      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s ease;
+    }
+    .gallery-box img:hover {
+      transform: scale(1.03);
     }
   </style>
 </head>
