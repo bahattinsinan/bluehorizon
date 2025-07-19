@@ -9,7 +9,7 @@
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(to bottom, #102840 0%, #0e1f33 100%);
+      background: linear-gradient(to bottom, #2a4267 0%, #1b2c45 100%);
       color: white;
     }
     .hero {
@@ -60,11 +60,13 @@
     }
     .gallery-preview {
       display: flex;
-      flex-wrap: wrap;
+      flex-wrap: nowrap;
       gap: 10px;
-      justify-content: center;
+      overflow-x: auto;
+      scroll-behavior: smooth;
     }
     .gallery-preview img {
+      flex: 0 0 auto;
       width: 180px;
       height: auto;
       border-radius: 8px;
@@ -77,6 +79,15 @@
     .gallery-preview img:hover {
       transform: scale(1.05);
     }
+    @media (min-width: 768px) {
+      .gallery-preview {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+      .gallery-preview img {
+        width: calc((100% - 40px) / 5);
+      }
+    }
   </style>
 </head>
 <body>
@@ -88,7 +99,7 @@
     <!-- Gallery Preview -->
     <div class="gallery-box">
       <div class="flag">🇺🇸</div>
-      <div class="gallery-preview">
+      <div class="gallery-preview" id="gallery">
         <img src="images/1.png" alt="Gallery image">
         <img src="images/2.png" alt="Gallery image">
         <img src="images/3.png" alt="Gallery image">
@@ -148,6 +159,14 @@
     setInterval(() => {
       commentIndex = (commentIndex + 1) % comments.length;
       commentBox.innerHTML = '<div class="flag">🇺🇸</div><p>' + comments[commentIndex] + '</p>';
+    }, 10000);
+
+    const gallery = document.getElementById("gallery");
+    setInterval(() => {
+      gallery.scrollLeft += gallery.offsetWidth;
+      if (gallery.scrollLeft + gallery.offsetWidth >= gallery.scrollWidth) {
+        gallery.scrollLeft = 0;
+      }
     }, 10000);
   </script>
 </body>
