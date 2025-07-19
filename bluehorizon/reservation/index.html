@@ -99,7 +99,7 @@
 
     <div id="price" style="margin-top: 20px; font-size: 18px; font-weight: bold;"></div>
 
-    <button class="button" id="payBtn" style="display: none;">Proceed to Payment</button>
+    <button class="button" id="payBtn" style="display: none;" onclick="showIban()">Proceed to Payment</button>
 
     <div class="iban-box" id="ibanBox" style="display: none;">
       <p>This is the USD account for our guests coming from the Republic of Türkiye:</p>
@@ -142,12 +142,15 @@
         const total = diffDays * roomRate * numGuests;
         priceDisplay.textContent = `Total: $${total}`;
         payBtn.style.display = "block";
-        ibanBox.style.display = "block";
       } else {
         priceDisplay.textContent = "";
         payBtn.style.display = "none";
         ibanBox.style.display = "none";
       }
+    }
+
+    function showIban() {
+      ibanBox.style.display = "block";
     }
 
     room.addEventListener("change", calculatePrice);
