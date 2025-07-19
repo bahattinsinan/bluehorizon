@@ -9,14 +9,15 @@
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
-      background: linear-gradient(to bottom, #2a4267 0%, #1b2c45 100%);
+      background: linear-gradient(to bottom, #3a578a 0%, #253d63 100%);
       color: white;
     }
     .hero {
       background: url('images/kapak.png') center/cover no-repeat;
       text-align: center;
-      padding: 100px 20px;
+      padding: 100px 20px 150px;
       box-shadow: inset 0 0 0 1000px rgba(0, 0, 0, 0.5);
+      position: relative;
     }
     .hero h1 {
       font-size: 64px;
@@ -25,13 +26,34 @@
       text-shadow: 0 4px 20px rgba(0, 0, 0, 0.6);
       letter-spacing: 3px;
     }
+    .nav-buttons {
+      position: absolute;
+      bottom: 20px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      gap: 20px;
+    }
+    .nav-buttons a {
+      background: #ffcc33;
+      color: #222;
+      padding: 10px 20px;
+      border-radius: 5px;
+      text-decoration: none;
+      font-weight: bold;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+      transition: background 0.3s;
+    }
+    .nav-buttons a:hover {
+      background: #ffb347;
+    }
     .content {
       max-width: 1100px;
       margin: 40px auto;
       padding: 20px;
     }
-    .comment-box, .blog-box, .gallery-box {
-      background: linear-gradient(135deg, #fefefe, #e7e7e7);
+    .comment-box {
+      background: linear-gradient(135deg, #ffb347, #ffcc33);
       color: #222;
       border-radius: 10px;
       padding: 20px;
@@ -40,8 +62,36 @@
       position: relative;
       transition: transform 0.3s ease;
     }
-    .comment-box:hover, .blog-box:hover, .gallery-box:hover {
+    .comment-box:hover {
       transform: translateY(-4px);
+    }
+    .blog-box:nth-child(odd) {
+      background: linear-gradient(135deg, #ffa07a, #f08080);
+    }
+    .blog-box:nth-child(even) {
+      background: linear-gradient(135deg, #ffdab9, #ffb6c1);
+    }
+    .blog-box {
+      color: #222;
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 40px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+      position: relative;
+      transition: transform 0.3s ease;
+    }
+    .blog-box:hover {
+      transform: translateY(-4px);
+    }
+    .gallery-box {
+      background: linear-gradient(135deg, #ffffff, #ececec);
+      color: #222;
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 40px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+      position: relative;
+      transition: transform 0.3s ease;
     }
     .flag {
       position: absolute;
@@ -54,7 +104,7 @@
       box-shadow: 0 2px 6px rgba(0,0,0,0.2);
     }
     .blog-box h3 {
-      color: #1e3f66;
+      color: #222;
       margin-top: 0;
       font-size: 26px;
     }
@@ -74,7 +124,11 @@
       object-fit: cover;
       filter: contrast(1.08) brightness(1.1) saturate(1.2);
       box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
-      transition: transform 0.3s ease;
+      transition: transform 0.3s ease, opacity 1s ease-in-out;
+      opacity: 0;
+    }
+    .gallery-preview img.visible {
+      opacity: 1;
     }
     .gallery-preview img:hover {
       transform: scale(1.05);
@@ -88,15 +142,35 @@
         width: calc((100% - 40px) / 5);
       }
     }
+    .footer {
+      text-align: center;
+      margin-top: 60px;
+      padding: 40px;
+      background: #1c2b45;
+      color: #ccc;
+      font-size: 16px;
+    }
+    .footer a {
+      color: #25d366;
+      text-decoration: none;
+      font-weight: bold;
+    }
   </style>
 </head>
 <body>
   <div class="hero">
     <h1>Blue Horizon Suites</h1>
+    <div class="nav-buttons">
+      <a href="#">Reservation</a>
+      <a href="#">Gallery</a>
+      <a href="#">About Us</a>
+      <a href="#">Contact</a>
+    </div>
   </div>
 
   <div class="content">
-    <!-- Gallery Preview -->
+    <h2 style="text-align:center; color:#ffcc33;">Misafir Yorumları</h2>
+
     <div class="gallery-box">
       <div class="flag">🇺🇸</div>
       <div class="gallery-preview" id="gallery">
@@ -109,26 +183,14 @@
         <img src="images/8.png" alt="Gallery image">
         <img src="images/9.png" alt="Gallery image">
         <img src="images/10.png" alt="Gallery image">
-        <img src="images/11.png" alt="Gallery image">
-        <img src="images/ChatGPT Image 19 Tem 2025 21_57_58.png" alt="Gallery image">
-        <img src="images/ChatGPT Image 19 Tem 2025 22_01_40.png" alt="Gallery image">
-        <img src="images/indir (7).jpg" alt="Gallery image">
-        <img src="images/indir (9).jpg" alt="Gallery image">
-        <img src="images/indir (11).jpg" alt="Gallery image">
-        <img src="images/indir.jpg" alt="Gallery image">
-        <img src="images/l.jpg" alt="Gallery image">
-        <img src="images/oda5.png" alt="Gallery image">
-        <img src="images/preview_setup-catering-ve-yemekli-davet_Ozk7V76F.jpg" alt="Gallery image">
       </div>
     </div>
 
-    <!-- Comment box -->
     <div class="comment-box" id="rotating-comment">
       <div class="flag">🇺🇸</div>
       <p><strong>Maria:</strong> The hotel was amazing!</p>
     </div>
 
-    <!-- Blog previews -->
     <div class="blog-box">
       <div class="flag">🇺🇸</div>
       <h3>Wake Up to Ocean Views</h3>
@@ -146,6 +208,12 @@
     </div>
   </div>
 
+  <div class="footer">
+  📍 California Oceanfront, 100 Beachside Avenue, CA 90210 <br>
+  <a href="https://wa.me/12512159107" target="_blank">📱 +1 251-215-91-07 (WhatsApp)</a>
+</div>
+
+
   <script>
     const commentBox = document.getElementById("rotating-comment");
     const comments = [
@@ -162,12 +230,20 @@
     }, 10000);
 
     const gallery = document.getElementById("gallery");
-    setInterval(() => {
-      gallery.scrollLeft += gallery.offsetWidth;
-      if (gallery.scrollLeft + gallery.offsetWidth >= gallery.scrollWidth) {
-        gallery.scrollLeft = 0;
+    const galleryImages = gallery.querySelectorAll("img");
+    let currentIndex = 0;
+    function showNextImage() {
+      galleryImages.forEach((img, index) => {
+        img.classList.remove("visible");
+      });
+      for (let i = 0; i < 5; i++) {
+        const index = (currentIndex + i) % galleryImages.length;
+        galleryImages[index].classList.add("visible");
       }
-    }, 10000);
+      currentIndex = (currentIndex + 1) % galleryImages.length;
+    }
+    showNextImage();
+    setInterval(showNextImage, 10000);
   </script>
 </body>
 </html>
