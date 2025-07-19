@@ -9,16 +9,14 @@
     body {
       margin: 0;
       font-family: 'Segoe UI', sans-serif;
-      background-color: #000;
+      background-color: #102840;
       color: white;
     }
-
     .hero {
-      background: linear-gradient(135deg, #1e90ff, #00bfff);
+      background: linear-gradient(135deg, #3b82f6, #2563eb);
       text-align: center;
-      padding: 100px 20px;
+      padding: 80px 20px;
     }
-
     .hero h1 {
       font-size: 60px;
       margin: 0;
@@ -26,29 +24,38 @@
       text-shadow: 3px 3px 10px rgba(0,0,0,0.6);
       letter-spacing: 2px;
     }
-
-    .sections {
-      background-color: #000;
-      text-align: center;
-      padding: 60px 20px;
+    .content {
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 20px;
     }
-
-    .sections h2 {
-      font-size: 36px;
-      color: #00bfff;
-      margin-bottom: 20px;
+    .comment-box, .blog-box, .gallery-box {
+      background: white;
+      color: black;
+      border-radius: 10px;
+      padding: 20px;
+      margin-bottom: 30px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+      position: relative;
     }
-
-    .sections a {
-      color: #fff;
-      display: block;
-      margin: 10px 0;
-      text-decoration: none;
+    .flag {
+      position: absolute;
+      top: -15px;
+      left: -15px;
+      background: #fff;
+      border-radius: 50%;
+      padding: 10px;
       font-size: 20px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.2);
     }
-
-    .sections a:hover {
-      color: #00bfff;
+    .blog-box h3 {
+      color: #1e3f66;
+      margin-top: 0;
+    }
+    .gallery-box img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
     }
   </style>
 </head>
@@ -57,12 +64,51 @@
     <h1>Blue Horizon Suites</h1>
   </div>
 
-  <div class="sections">
-    <h2>Explore Our Resort</h2>
-    <a href="comments/index.html">🌟 Guest Reviews</a>
-    <a href="blogs/index.html">📖 Our Blog</a>
-    <a href="#reservation">🛏️ Make a Reservation</a>
-    <a href="https://wa.me/12512159107">💬 Contact via WhatsApp</a>
+  <div class="content">
+    <!-- Gallery Preview -->
+    <div class="gallery-box">
+      <div class="flag">🇺🇸</div>
+      <img src="images/oda1.jpg" alt="Hotel view" loading="lazy">
+    </div>
+
+    <!-- Comment box -->
+    <div class="comment-box" id="rotating-comment">
+      <div class="flag">🇺🇸</div>
+      <p><strong>Maria:</strong> The hotel was amazing!</p>
+    </div>
+
+    <!-- Blog previews -->
+    <div class="blog-box">
+      <div class="flag">🇺🇸</div>
+      <h3>Wake Up to Ocean Views</h3>
+      <p>Experience the breathtaking beauty of waking up to the sound of waves and a clear view of the horizon. Our ocean-view rooms provide the perfect start to a luxurious day in California.</p>
+    </div>
+    <div class="blog-box">
+      <div class="flag">🇺🇸</div>
+      <h3>Fine Dining by the Sea</h3>
+      <p>Our chefs prepare exquisite dishes using the freshest local ingredients. Dine by candlelight with the ocean breeze for a truly magical experience.</p>
+    </div>
+    <div class="blog-box">
+      <div class="flag">🇺🇸</div>
+      <h3>A Journey from Kitchen to Coast</h3>
+      <p>In 2001, Muzaffer Koç arrived in the United States and began his American journey as a humble cook. Today, Blue Horizon Suites is a living success story built on dreams and family unity.</p>
+    </div>
   </div>
+
+  <script>
+    const commentBox = document.getElementById("rotating-comment");
+    const comments = [
+      "<strong>Maria:</strong> The hotel was amazing!",
+      "<strong>Joachim:</strong> Ich komme definitiv wieder!",
+      "<strong>Robert:</strong> Je reviendrai sans hésiter!",
+      "<strong>Alan:</strong> Clean rooms and great location!",
+      "<strong>Lori:</strong> Staff was incredibly kind!"
+    ];
+    let commentIndex = 0;
+    setInterval(() => {
+      commentIndex = (commentIndex + 1) % comments.length;
+      commentBox.innerHTML = '<div class="flag">🇺🇸</div><p>' + comments[commentIndex] + '</p>';
+    }, 10000);
+  </script>
 </body>
 </html>
