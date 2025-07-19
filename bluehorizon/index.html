@@ -115,29 +115,39 @@
       overflow-x: auto;
       scroll-behavior: smooth;
     }
-    .gallery-preview img {
-      flex: 0 0 auto;
-      width: 180px;
-      height: auto;
-      border-radius: 8px;
-      image-rendering: auto;
-      object-fit: cover;
-      filter: contrast(1.08) brightness(1.1) saturate(1.2);
-      box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
-      transition: transform 0.3s ease, opacity 1s ease-in-out;
-      opacity: 0;
-    }
-    .gallery-preview img.visible {
-      opacity: 1;
-    }
-    .gallery-preview img:hover {
-      transform: scale(1.05);
-    }
+    .gallery-preview {
+  position: relative;
+  height: 220px; /* resim yüksekliğine göre ayarlayabilirsin */
+  overflow: hidden;
+}
+.gallery-preview img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+  filter: contrast(1.08) brightness(1.1) saturate(1.2);
+  box-shadow: 0 6px 15px rgba(0, 0, 0, 0.3);
+  transition: opacity 1s ease-in-out;
+  opacity: 0;
+  z-index: 1;
+}
+.gallery-preview img.visible {
+  opacity: 1;
+  z-index: 2;
+}
+.gallery-preview img:hover {
+  transform: scale(1.05);
+}
+
     @media (min-width: 768px) {
-      .gallery-preview {
-        flex-wrap: wrap;
-        justify-content: center;
-      }
+  .gallery-preview {
+    height: 300px; /* büyük ekranlarda daha yüksek olabilir */
+  }
+   }
+
       .gallery-preview img {
         width: calc((100% - 40px) / 5);
       }
